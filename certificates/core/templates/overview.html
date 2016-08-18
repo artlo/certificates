@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" media="all" href="{% static "overview.css" %}" />
+    <title>Certificates</title>
+</head>
+<body>
+<div id="content">
+    <div>Upload Cerificate</div>
+    <div id="import_form">
+        <form id="certificate-import-form"
+              method="POST"
+              action="{% url 'upload-file' %}"
+              accept-charset="utf-8"
+              enctype="multipart/form-data">
+            <p>
+                <label for="id-import">Choose Certificate</label>
+                <input type="file" name="import_file"></input>
+            </p>
+            <p>
+                <input type="submit" class="import-button" value="Upload"></input>
+            </p>
+        </form>
+    </div>
+    {% if certificate %}
+    <div id="certificate_data">
+        <div class="row">
+            <div class="key">Country</div>
+            <div class="value">{{ certificate.country }}&nbsp;</div>
+        </div>
+        <div class="row">
+            <div class="key">Organization</div>
+            <div class="value">{{ certificate.organization }}&nbsp;</div>
+        </div>
+        <div class="row">
+            <div class="key">Common Name</div>
+            <div class="value">{{ certificate.common_name }}&nbsp;</div>
+        </div>
+        <div class="row">
+            <div class="key">Surname</div>
+            <div class="value">{{ certificate.surname }}&nbsp;</div>
+        </div>
+        <div class="row">
+            <div class="key">Email</div>
+            <div class="value">{{ certificate.email }}&nbsp;</div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
